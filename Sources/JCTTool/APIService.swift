@@ -20,6 +20,8 @@ public struct ResourcePost<T>{
 
 public class APIWebService {
     
+    public init() {}
+    
     public func load<T>(resource:ResourceGet<T>,completion:@escaping(T?)->()){
         URLSession.shared.dataTask(with: resource.url) { data, response, error in
             if let data = data {
