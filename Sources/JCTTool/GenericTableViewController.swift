@@ -7,37 +7,37 @@
 
 import UIKit
 
-public class GenericCell<U>: UITableViewCell {
-    var item: U!
+open class GenericCell<U>: UITableViewCell {
+   open var item: U!
     
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
     }
     
-    public func setupViews() {}
+    open  func setupViews() {}
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
 
-public class GenericTableViewController<T: GenericCell<U>, U>: UITableViewController {
+open class GenericTableViewController<T: GenericCell<U>, U>: UITableViewController {
     
-    public var items = [U]()
+    open var items = [U]()
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         
         let reuseIdentifier = NSStringFromClass(T.self)
         tableView.register(T.self, forCellReuseIdentifier: reuseIdentifier)
     }
     
-    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+   open  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return items.count
     }
     
-    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+   open override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let identifier = NSStringFromClass(T.self)
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! T
         cell.item = items[indexPath.row]
