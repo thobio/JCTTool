@@ -45,13 +45,17 @@ class ViewController: UIViewController {
     }
 }
 ```
+
+<img src='screenshot/Size.png' width='400' height='500' />
 #### If we want to place the image to the center of the  parent view .
 
 ```
 profileImage.center(inView: self.view)
 ```
-
+<img src='screenshot/center.png' width='400' height='500' />
 #### If we want to place the image top center of the parent view.
  ```
  profileImage.centerX(inView: view, topAnchor: view.topAnchor, paddingTop: 10)
  ```
+
+ <img src='screenshot/TopCenter.png' width='400' height='500' />
