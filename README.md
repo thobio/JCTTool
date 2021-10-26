@@ -57,7 +57,53 @@ profileImage.center(inView: self.view)
 
 #### If we want to place the image top center of the parent view.
  ```
- profileImage.centerX(inView: view, topAnchor: view.topAnchor, paddingTop: 10)
+ profileImage.centerX(inView: view, topAnchor: view.topAnchor, paddingTop: 40)
  ```
 
  <img src='screenshot/TopCenter.png' width='400' height='500' />
+
+ #### if we want to create a Floating Button with Color Code hex
+
+ ```
+import UIKit
+import JCTTool
+
+class ViewController: UIViewController {
+    
+    //MARK:- Property
+    let profileImage:UIImageView = {
+        let imgView = UIImageView()
+        imgView.image = UIImage(named: "profile")
+        return imgView
+    }()
+    
+    let floatingButton : UIButton = {
+        let btn = UIButton()
+        btn.setImage(UIImage(systemName: "plus"), for: [])
+        btn.layer.cornerRadius = 25
+        btn.backgroundColor = UIColor.init(hex: "#76448A") // hex Color Code
+        btn.imageView?.tintColor = .white
+        return btn
+    }()
+    
+    //MARK:- LifeCycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.addSubview(profileImage)
+        view.addSubview(floatingButton)
+        congigUIJCTToolFunc()
+    }
+    
+    //MARK:- Selection
+    
+    //MARK:- Helper
+    func congigUIJCTToolFunc(){
+        profileImage.center(inView: view)
+        profileImage.setDimensions(width: 200, height: 300)
+        floatingButton.anchor(top: nil, left: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 20, paddingRight: 20, width: 50, height: 50)
+    }
+}
+ ```
+
+ <img src='screenshot/Floating.png' />
